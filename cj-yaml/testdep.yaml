@@ -1,0 +1,50 @@
+# Strat -> find and replace "jonathan-test" with whatever you want and then add enable features as needed
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jonathan-test
+  labels:
+    k8s-app: jonathan-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: jonathan-test
+  template:
+    metadata:
+      labels:
+        k8s-app: jonathan-test
+    spec:
+      containers:
+      - name: jonathan-test
+        image: nvidia/cuda:11.3.1-devel-ubuntu20.04
+        resources:
+          limits:
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
+          requests:
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
+        command: [ "sh", "-c", "sleep infinity" ]
+        volumeMounts:
+        - mountPath: /pvcvolume
+          name: examplevol
+      volumes:
+      - name: examplevol
+        persistentVolumeClaim:
+          claimName: jonathan-test
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: nvidia.com/gpu.product
+      #           operator: In
+      #           values:
+      #           - NVIDIA-A10
+      # tolerations:
+      # - effect: NoSchedule
+      #   key: nautilus.io/gilpin-lab
+      #   operator: Exists
