@@ -1,0 +1,41 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jonathan-video-classifer-train
+spec:
+  template:
+    spec:
+      containers:
+      - name: jonathan-video-classifer-train
+        image: nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04
+        command:
+        - sh
+        - -c
+        - "cd pvcvolume && sh setup.sh && python3 train.py"
+        volumeMounts:
+        - name: pvcvolume
+          mountPath: /pvcvolume
+        resources:
+          limits:
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
+          requests:
+            memory: 32Gi
+            cpu: "10"
+            nvidia.com/gpu: 1
+      volumes:
+      - name: pvcvolume
+        persistentVolumeClaim:
+          claimName: jonathan-video-classification
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nvidia.com/gpu.product
+                operator: In
+                values:
+                - NVIDIA-A10
+      restartPolicy: Never
+  backoffLimit: 5
