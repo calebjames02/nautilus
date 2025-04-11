@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jonathan-test
+  name: cjbergen-test
   labels:
-    k8s-app: jonathan-test
+    k8s-app: cjbergen-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      k8s-app: jonathan-test
+      k8s-app: cjbergen-test
   template:
     metadata:
       labels:
-        k8s-app: jonathan-test
+        k8s-app: cjbergen-test
     spec:
       containers:
-      - name: jonathan-test
+      - name: cjbergen-test
         image: nvidia/cuda:11.3.1-devel-ubuntu20.04
         resources:
           limits:
@@ -30,11 +30,11 @@ spec:
         command: [ "sh", "-c", "sleep infinity" ]
         volumeMounts:
         - mountPath: /pvcvolume
-          name: examplevol
+          name: examplevol # replace this with different name?
       volumes:
       - name: examplevol
         persistentVolumeClaim:
-          claimName: jonathan-test
+          claimName: cjbergen-test
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:

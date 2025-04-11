@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: cruzid-carla # Change this to your cruzid
+  name: cjbergen-carla # Change this to your cruzid
 spec:
   storageClassName: rook-ceph-block
   accessModes:
