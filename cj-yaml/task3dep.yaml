@@ -34,7 +34,7 @@ spec:
       volumes:
       - name: examplevol
         persistentVolumeClaim:
-          claimName: cjbergen-test
+          claimName: cjbergen-task3
       # affinity:
       #   nodeAffinity:
       #     requiredDuringSchedulingIgnoredDuringExecution:
