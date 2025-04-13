@@ -11,7 +11,7 @@ spec:
         command:
         - sh
         - -c
-        - "cd pvcvolume && sh setup.sh && python3 cifar10train.py"
+        - "cd /pvcvolume && sh setup.sh && python3 cifar10train.py"
         volumeMounts:
         - name: pvcvolume
           mountPath: /pvcvolume

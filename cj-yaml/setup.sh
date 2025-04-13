@@ -13,7 +13,10 @@ rm ~/miniconda3/miniconda.sh
 
 . ~/miniconda3/bin/activate && conda init --all
 
-conda create -n conda -y python=3.9 && conda activate conda
+source /root/miniconda3/etc/profile.d/conda.sh
+conda init bash
+conda create -n condaenv -y python=3.9
+conda activate condaenv
 
 conda install -y pytorch torchvision torchaudio cpuonly -c pytorch
 conda install -y matplotlib
