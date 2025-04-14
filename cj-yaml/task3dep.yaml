@@ -30,7 +30,7 @@ spec:
         command: [ "sh", "-c", "sleep infinity" ]
         volumeMounts:
         - mountPath: /pvcvolume
-          name: examplevol # replace this with different name?
+          name: examplevol
       volumes:
       - name: examplevol
         persistentVolumeClaim:
