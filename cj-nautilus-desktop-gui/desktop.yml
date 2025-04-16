@@ -84,14 +84,13 @@ spec:
         - 8.8.4.4
       volumes:
       - name: dshm
-        emptyDir:
-          medium: Memory
+        emptyDir: {}
       - name: cache-vol
         persistentVolumeClaim:
           claimName: cjbergen-carla-cache # Change this to your cruzid
       - name: root-vol
         persistentVolumeClaim:
-          claimName: cruzid-carla # Change this to your cruzid
+          claimName: cjbergen-carla # Change this to your cruzid
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

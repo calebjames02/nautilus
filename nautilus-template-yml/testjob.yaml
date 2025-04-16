@@ -1,12 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: jonathan-video-classifer-train
+  name: cjbergen-task3
 spec:
   template:
     spec:
       containers:
-      - name: jonathan-video-classifer-train
+      - name: cjbergen-task3
         image: nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04
         command:
         - sh
@@ -27,7 +27,7 @@ spec:
       volumes:
       - name: pvcvolume
         persistentVolumeClaim:
-          claimName: jonathan-video-classification
+          claimName: cjbergen-task3
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:

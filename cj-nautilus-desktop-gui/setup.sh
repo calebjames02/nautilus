@@ -1,6 +1,6 @@
-NAME=cruzid-desktop # Change this to your cruzid
-POD_NAME=cruzid-carla # Change this to your cruzid
-CACHE_NAME=cruzid-carla-cache # Change this to your cruzid
+NAME=cjbergen-desktop # Change this to your cruzid
+POD_NAME=cjbergen-carla # Change this to your cruzid
+CACHE_NAME=cjbergen-carla-cache # Change this to your cruzid
 
 if [ "$1" -eq 1 ]; then
     kubectl delete deployment $NAME
