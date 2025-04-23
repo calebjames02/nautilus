@@ -68,7 +68,7 @@ spec:
             ephemeral-storage: 35Gi
           requests:
             memory: 8Gi
-            cpu: "4"
+            cpu: "1"
             ephemeral-storage: 35Gi
         volumeMounts:
         - mountPath: /dev/shm
